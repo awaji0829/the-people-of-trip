@@ -19,11 +19,11 @@ export const NavigateBox = () => {
 
 const Container = styled.ul`
   position: absolute;
-  bottom: 0;
+  top: 0;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   width: 100%;
-  height: 20%;
+  height: 15%;
   background-color: yellowgreen;
 `;
 
@@ -37,7 +37,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   max-width: 100rem;
-  min-width: 20rem;
+  min-width: 30rem;
   background-color: aqua;
 `;
 

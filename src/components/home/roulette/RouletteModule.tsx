@@ -10,10 +10,11 @@ const getRandomArbitrary = (min: number, max: number) => {
 export const RouletteModule = () => {
   const [data, setData] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const paddingTop = "32%";
   const getList = () => {
-    console.log("실행");
+    // console.log("실행");
     setTimeout(async () => {
-      setLoading(true);
+      // setLoading(true);
       const randomNum = getRandomArbitrary(1, 1000);
       let response = null;
       try {
@@ -21,53 +22,73 @@ export const RouletteModule = () => {
           `http://apis.data.go.kr/B551011/GoCamping/basedList?serviceKey=${SERVICE_KEY}&numOfRows=1&pageNo=${randomNum}&MobileOS=WIN&MobileApp=01055234594&_type=json`
         );
         if (response.status === 200) {
-          console.log("왁!", response.data.response.body.items.item);
           setData(response.data.response.body.items.item);
           // return response;
         }
       } catch (error) {
         console.error(error);
       }
-      setLoading(false);
+
+      // setLoading(false);
     }, 300);
   };
 
-  // useEffect(() => {
-  //   getList();
-  // }, []);
-
-  // return data?.map((camp: any, inx: number) => (
-  //   <Container key={inx}>
-  //     {loading! ? <Img src={camp.firstImageUrl} /> : <div>불러오는중,,,</div>}
-  //     <StartButton onClick={() => getList()}>나의 캠핑지를 골라줘</StartButton>
-  //   </Container>
-  // ));
-
   return (
     <Container>
-      {data[0] !== undefined && loading! ? (
-        <Img src={data[0].firstImageUrl} />
+      {data[0] !== undefined ? (
+        <>
+          {/* <Img src={data[0].firstImageUrl} /> */}
+          {/* <RatioWrapper style={{ paddingTop }}>
+            <img src={data[0].firstImageUrl} />
+          </RatioWrapper> */}
+          <Title>
+            {data[0].facltNm} ({data[0].doNm})
+          </Title>
+        </>
       ) : (
-        // <div>불러오는중,,,</div>
         <div>불러오는중,,,</div>
       )}
-      <StartButton onClick={() => getList()}>나의 캠핑지를 골라줘</StartButton>
+      <StartButton onClick={() => getList()}>나의 캠핑지를 골라줘</StartButton>{" "}
     </Container>
   );
 };
 const Container = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: palevioletred;
 `;
 const Img = styled.img`
   width: 500px;
   height: 300px;
+  border-radius: 10px;
+`;
+
+const Title = styled.div`
+  margin: 5px 0;
+  font-size: 26px;
 `;
 
 const StartButton = styled.button`
-  width: 50px;
-  height: 20px;
+  /* width: 50px;
+  height: 20px; */
   background-color: purple;
+  padding: 10px;
+  cursor: pointer;
+`;
+const RatioWrapper = styled.div`
+  width: 100%;
+  position: relative;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
 `;
