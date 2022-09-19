@@ -18,8 +18,8 @@ export const NavigateBox = () => {
 };
 
 const Container = styled.ul`
-  position: absolute;
-  top: 0;
+  /* position: absolute;
+  top: 0; */
   display: flex;
   justify-content: flex-end;
   width: 100%;

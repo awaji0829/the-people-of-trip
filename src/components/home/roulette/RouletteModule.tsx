@@ -38,9 +38,9 @@ export const RouletteModule = () => {
       {data[0] !== undefined ? (
         <>
           {/* <Img src={data[0].firstImageUrl} /> */}
-          {/* <RatioWrapper style={{ paddingTop }}>
+          <RatioWrapper style={{ paddingTop }}>
             <img src={data[0].firstImageUrl} />
-          </RatioWrapper> */}
+          </RatioWrapper>
           <Title>
             {data[0].facltNm} ({data[0].doNm})
           </Title>
@@ -53,13 +53,34 @@ export const RouletteModule = () => {
   );
 };
 const Container = styled.div`
-  height: 100%;
+  /* height: 85%; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: palevioletred;
+  background-color: red;
 `;
+
+const RatioWrapper = styled.div`
+  width: 80%;
+  /* padding: 1rem; */
+  /* height: 100%; */
+  position: relative;
+  background-color: pink;
+
+  img {
+    position: absolute;
+    top: 50%;
+
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    /* height: 50%; */
+    display: block;
+    object-fit: cover;
+  }
+`;
+
 const Img = styled.img`
   width: 500px;
   height: 300px;
@@ -77,18 +98,4 @@ const StartButton = styled.button`
   background-color: purple;
   padding: 10px;
   cursor: pointer;
-`;
-const RatioWrapper = styled.div`
-  width: 100%;
-  position: relative;
-
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-  }
 `;

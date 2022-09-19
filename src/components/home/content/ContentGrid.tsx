@@ -13,7 +13,6 @@ export const ContentGrid = () => {
     );
     console.log("picture", picture.data.response.body.items.item);
     setContents(picture.data.response.body.items.item);
-    //msyu1207.tistory.com/entry/React로-영화-정보를-검색해보자-두번째-네이버-API-사용-CORS-설정-하기#toc-📢네이버 검색 API를 이용하여 영화 정보 가져오기 [로띠 로그:티스토리]
   };
 
   useEffect(() => {
@@ -38,6 +37,7 @@ const Block = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: -1rem;
+
   /* gap: 8px; */
   ${mediaQuery(767)} {
     margin: 0;

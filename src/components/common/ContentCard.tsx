@@ -28,7 +28,10 @@ export const ContentCard = ({ content }: { content: any }) => {
 };
 
 const Block = styled.div`
-  width: calc(1376px / 4 - 2rem);
+  /* width: calc(1376px / 4 - 2rem); */
+
+  width: 20rem;
+  /* border-radius: 4px; */
   margin: 1rem;
 
   border-radius: 4px;
