@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { mediaQuery } from "../../styles/media";
+import Image from "next/image";
 
 export const ContentCard = ({ content }: { content: any }) => {
   //   console.log(content);
@@ -15,7 +16,7 @@ export const ContentCard = ({ content }: { content: any }) => {
   return (
     <Block>
       <RatioWrapper style={{ paddingTop }}>
-        <img src={content.firstImageUrl} />
+        <Image src={content.firstImageUrl} layout="fill" alt="camp" />
       </RatioWrapper>
       <DescBox>{content.facltNm}</DescBox>
       <TagBox>
@@ -31,7 +32,7 @@ const Block = styled.div`
   /* width: calc(1376px / 4 - 2rem); */
 
   width: 20rem;
-  /* border-radius: 4px; */
+
   margin: 1rem;
 
   border-radius: 4px;

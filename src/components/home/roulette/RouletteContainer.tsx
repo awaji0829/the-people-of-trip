@@ -7,7 +7,7 @@ export const RouletteContainer = () => {
   return (
     <Container>
       <NavigateBox />
-      <RouletteModule />{" "}
+      <RouletteModule />
     </Container>
   );
 };

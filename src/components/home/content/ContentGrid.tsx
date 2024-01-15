@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { SERVICE_KEY } from "../../../constant";
+// import { SERVICE_KEY } from "../../../constant";
 import { ContentCard } from "../../common/ContentCard";
 import { mediaQuery } from "../../../styles/media";
 
@@ -9,7 +9,7 @@ export const ContentGrid = () => {
   const [contents, setContents] = useState<any>();
   const getPhoto = async () => {
     const picture = await axios.get(
-      `http://apis.data.go.kr/B551011/GoCamping/basedList?serviceKey=${SERVICE_KEY}&numOfRows=16&MobileOS=WIN&MobileApp=01055234594&_type=json`
+      `http://apis.data.go.kr/B551011/GoCamping/basedList?serviceKey=${process.env.SERVICE_KEY}&numOfRows=16&MobileOS=WIN&MobileApp=01055234594&_type=json`
     );
     console.log("picture", picture.data.response.body.items.item);
     setContents(picture.data.response.body.items.item);

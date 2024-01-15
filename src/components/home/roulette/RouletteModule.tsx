@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { SERVICE_KEY } from "../../../constant";
+import Image from "next/image";
 
 const getRandomArbitrary = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min) + min);
@@ -18,9 +18,7 @@ export const RouletteModule = () => {
       const randomNum = getRandomArbitrary(1, 1000);
       let response = null;
       try {
-        response = await axios.get(
-          `http://apis.data.go.kr/B551011/GoCamping/basedList?serviceKey=${SERVICE_KEY}&numOfRows=1&pageNo=${randomNum}&MobileOS=WIN&MobileApp=01055234594&_type=json`
-        );
+        response = await axios.get(`http://apis.data.go.kr`);
         if (response.status === 200) {
           setData(response.data.response.body.items.item);
           // return response;
@@ -37,9 +35,12 @@ export const RouletteModule = () => {
     <Container>
       {data[0] !== undefined ? (
         <>
-          {/* <Img src={data[0].firstImageUrl} /> */}
           <RatioWrapper style={{ paddingTop }}>
-            <img src={data[0].firstImageUrl} />
+            <img
+              src={data[0].firstImageUrl}
+              alt="random-image"
+              // layout="fill"
+            />
           </RatioWrapper>
           <Title>
             {data[0].facltNm} ({data[0].doNm})
@@ -53,20 +54,17 @@ export const RouletteModule = () => {
   );
 };
 const Container = styled.div`
-  /* height: 85%; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: red;
+  padding: 20px;
 `;
 
 const RatioWrapper = styled.div`
   width: 80%;
-  /* padding: 1rem; */
-  /* height: 100%; */
+
   position: relative;
-  background-color: pink;
 
   img {
     position: absolute;
@@ -78,13 +76,8 @@ const RatioWrapper = styled.div`
     /* height: 50%; */
     display: block;
     object-fit: cover;
+    border-radius: 16px;
   }
-`;
-
-const Img = styled.img`
-  width: 500px;
-  height: 300px;
-  border-radius: 10px;
 `;
 
 const Title = styled.div`
@@ -93,8 +86,6 @@ const Title = styled.div`
 `;
 
 const StartButton = styled.button`
-  /* width: 50px;
-  height: 20px; */
   background-color: purple;
   padding: 10px;
   cursor: pointer;
