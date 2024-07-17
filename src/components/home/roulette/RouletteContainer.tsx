@@ -6,15 +6,12 @@ import { RouletteModule } from "./RouletteModule";
 export const RouletteContainer = () => {
   return (
     <Container>
-      <RouletteModule />
       <NavigateBox />
+      <RouletteModule />
     </Container>
   );
 };
 
 const Container = styled.div`
   position: relative;
-  width: 100vw;
-  height: 70vh;
-  background-color: orange;
 `;
