@@ -5,7 +5,7 @@ export type ListLayoutProps = {
   main: React.ReactNode;
 };
 
-export const ListLayout = ({ children }) => {
+export const ListLayout = ({ children }: any) => {
   return (
     <Block>
       <ContentBox>{children}</ContentBox>

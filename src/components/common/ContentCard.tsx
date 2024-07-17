@@ -4,8 +4,6 @@ import { mediaQuery } from "../../styles/media";
 import Image from "next/image";
 
 export const ContentCard = ({ content }: { content: any }) => {
-  //   console.log(content);
-
   const getTags = (tags: string) => {
     if (!tags) return null;
     return tags.split(",");
@@ -29,8 +27,6 @@ export const ContentCard = ({ content }: { content: any }) => {
 };
 
 const Block = styled.div`
-  /* width: calc(1376px / 4 - 2rem); */
-
   width: 20rem;
 
   margin: 1rem;
@@ -79,7 +75,6 @@ const DescBox = styled.div`
   padding-left: 0;
 
   font-size: 2rem;
-  /* text-align: center; */
 `;
 
 const TagBox = styled.div`
@@ -89,7 +84,7 @@ const TagBox = styled.div`
   span {
     font-size: 13px;
     padding: 5px;
-    /* margin-right: 5px; */
+
     border-radius: 10px;
     background-color: green;
   }

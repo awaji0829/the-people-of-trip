@@ -1,25 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import axios from "axios";
-// import { SERVICE_KEY } from "../../../constant";
+
 import { ContentCard } from "../../common/ContentCard";
 import { mediaQuery } from "../../../styles/media";
+import { useQuery } from "@tanstack/react-query";
+import { getCampList } from "../../../hooks/camp";
 
 export const ContentGrid = () => {
   const [contents, setContents] = useState<any>();
-  const getPhoto = async () => {
-    const picture = await axios.get(
-      `http://apis.data.go.kr/B551011/GoCamping/basedList?serviceKey=${process.env.SERVICE_KEY}&numOfRows=16&MobileOS=WIN&MobileApp=01055234594&_type=json`
-    );
-    console.log("picture", picture.data.response.body.items.item);
-    setContents(picture.data.response.body.items.item);
-  };
+  const { data } = useQuery({
+    queryKey: ["camp-list"],
+    queryFn: () => getCampList({ randomNum: 2 }),
+  });
 
-  useEffect(() => {
-    getPhoto();
-
-    // console.log(picture);
-  }, []);
   if (contents) {
     return (
       <Block>

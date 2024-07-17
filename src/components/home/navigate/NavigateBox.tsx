@@ -9,17 +9,14 @@ export const NavigateBox = () => {
           <Icon>커뮤니티</Icon>
         </LinkIcon>
         <LinkIcon>
-          {" "}
           <Icon>로그인</Icon>
-        </LinkIcon>{" "}
+        </LinkIcon>
       </Wrapper>
     </Container>
   );
 };
 
 const Container = styled.ul`
-  /* position: absolute;
-  top: 0; */
   display: flex;
   justify-content: flex-end;
   width: 100%;

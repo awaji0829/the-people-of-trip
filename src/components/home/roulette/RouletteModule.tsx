@@ -1,7 +1,6 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import Image from "next/image";
 
 const getRandomArbitrary = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min) + min);
@@ -18,7 +17,9 @@ export const RouletteModule = () => {
       const randomNum = getRandomArbitrary(1, 1000);
       let response = null;
       try {
-        response = await axios.get(`http://apis.data.go.kr`);
+        response = await axios.get(
+          `http://apis.data.go.kr/B551011/GoCamping/basedList?serviceKey=${process.env.NEXT_PUBLIC_SERVICE_KEY}&numOfRows=1&pageNo=${randomNum}&MobileOS=WIN&MobileApp=01055234594&_type=json`
+        );
         if (response.status === 200) {
           setData(response.data.response.body.items.item);
           // return response;
@@ -69,11 +70,9 @@ const RatioWrapper = styled.div`
   img {
     position: absolute;
     top: 50%;
-
     left: 50%;
     transform: translate(-50%, -50%);
     width: 50%;
-    /* height: 50%; */
     display: block;
     object-fit: cover;
     border-radius: 16px;
